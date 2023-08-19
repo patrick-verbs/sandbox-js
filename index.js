@@ -4,14 +4,43 @@ const c = canvas.getContext('2d');
 canvas.width = 64 * 16; // 1024
 canvas.height = 64 * 9; // 576
 
+class Card {
+    constructor() {
+        this.position = {
+            x: 100,
+            y: 100,
+        }
+
+        this.width = 100;
+        this.height = 100;
+
+        this.sides = {
+            bottom: this.position.y + this.height,
+            top: this.position.y,
+            left: this.position.x,
+            right: this.position.x + this.width,
+        }
+    }
+
+    draw() {
+        c.fillStyle = 'red';
+        c.fillRect(this.position.x, this.position.y, this.width, this.height);
+    }
+
+    update() {
+        if (this.sides.bottom < canvas.height) {
+            this.position.y++;
+            this.sides.bottom = this.position.y + 100;
+        }
+    }
+}
+
+const card = new Card();
 
 // Static background renders once
 c.fillStyle = 'white';
 c.fillRect(0, 0, canvas.width, canvas.height);
 
-let y = 100;
-const height = 100;
-let bottom = y + height;
 function animate() {
     // Dynamic function calls itself on 1st line to render indefinitely
     window.requestAnimationFrame(animate);
@@ -21,14 +50,8 @@ function animate() {
     c.fillStyle = 'white';
     c.fillRect(0, 0, canvas.width, canvas.height);
 
-    // 1st object
-    c.fillStyle = 'red';
-    c.fillRect(100, y, 100, height);
-
-    if (bottom < canvas.height) {
-        y++;
-        bottom = y + 100;
-    }
+    card.draw();
+    card.update();
 }
 
 // Call dynamic function once, then it calls itself
