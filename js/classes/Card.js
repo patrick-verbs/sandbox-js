@@ -17,8 +17,8 @@ class Card {
     }
 
     draw() {
-        c.fillStyle = 'red';
-        c.fillRect(this.position.x, this.position.y, this.width, this.height);
+        ctx.fillStyle = 'red';
+        ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 
     update() {
