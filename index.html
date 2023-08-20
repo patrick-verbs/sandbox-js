@@ -1,9 +1,27 @@
-<style>
-    body {
-        background: black;
-    }
-</style>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML5 Canvas Sandbox</title>
+    <style>
+        body {
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-<canvas></canvas>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
 
-<script src="index.js"></script>
+<body>
+    <canvas id="canvas" width="1080" height="720"></canvas>
+
+    <script src="js/classes/Card.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
